@@ -1,0 +1,18 @@
+{% extends 'base_template.html' %}
+{% block header %}
+    <script src="/static/js/index.js"></script>
+{% endblock header %}
+{% block content %}
+    <center>
+    <div id="questions">
+        <h1>Welcome</h1>
+        <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Save">
+    </form>
+     <button id="firstForm">Ready?</button>
+            </div>
+    </center>
+{% endblock content %}
