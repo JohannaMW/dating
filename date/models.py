@@ -95,7 +95,18 @@ RIGHT_PERSON = ((1, 'Mommy and Daddy tell me'),
 #class Location(models.Model):
  #   name = models.CharField(max_length=100)
 
-class Preference(models.Model):
+class Single(AbstractUser):
+    FEMALE = 'F'
+    MALE = 'M'
+    GENDER_CHOICES = (
+        (FEMALE, 'Female'),
+        (MALE, 'Male'),
+    )
+    paid = models.BooleanField(default=False)
+    location = models.CharField(max_length=100, null=True, blank=True)
+    age = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to='static/img/', null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='F')
     status = models.IntegerField(max_length=2, choices=MY_STATUS, null=True, blank=True)
     breakup = models.IntegerField(max_length=2, choices=LAST_BREAKUP, null=True, blank=True)
     romance = models.IntegerField(max_length=2, choices=ROMANCE, null=True, blank=True)
@@ -105,18 +116,4 @@ class Preference(models.Model):
     core_beliefs = models.IntegerField(max_length=2, choices=CORE_BELIEFS, null=True, blank=True)
     right_person = models.IntegerField(max_length=2, choices=RIGHT_PERSON, null=True, blank=True)
 
-class Single(AbstractUser):
-    FEMALE = 'F'
-    MALE = 'M'
-    GENDER_CHOICES = (
-        (FEMALE, 'Female'),
-        (MALE, 'Male'),
-    )
-    name = models.CharField(max_length=100)
-    paid = models.BooleanField(default=False)
-    location = models.CharField(max_length=100, null=True, blank=True)
-    age = models.IntegerField(null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='F')
-    preferences = models.ManyToManyField(Preference, related_name="preferences", null=True, blank=True)
 

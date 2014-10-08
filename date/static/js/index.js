@@ -1,50 +1,20 @@
-/**
- * Created by johanna on 10/3/14.
- */
 $(document).ready(function() {
-var url = "";
-var form;
+    var query;
 
- $("button#firstForm").on('click', function() {
-        console.log("hELLO");
-        getForm("/core_beliefs/");
-        console.log(form);
-       $("#questions").html("<p>Core Beliefs: </p><form method='post', name='status'>{% csrf_token %}" + "{{ " +  form + ".as_p }}" +
-                "<input type='submit' value='Submit'></form>")
-
+    $("#searchSubmit").on('click', function() {
+        getResults();
     });
 
-var getForm = function (url) {
-    console.log("Hello");
+    var getResults = function () {
+        query = $('#search_query').val();
+        console.log(query);
     $.ajax({
-        url: url,
-        dataType: "jsonp",
-        type: "GET",
+        url: '/search_singles/' + query + '/',
+        type: 'GET',
         success: function (data) {
-            form = data.form
-        },
-        error: function (response) {
-
-        }
-    });
-};
-
-var coreBeliefs = function () {
-    var beliefs = $('#beliefs').val();
-    console.log("Core Beliefs: " + beliefs);
-    var beliefsData = { core_beliefs : beliefs };
-    postData = JSON.stringify(beliefsData);
-    $.ajax({
-        url: '/core_beliefs/',
-        type: 'POST',
-        dataType: 'json',
-        data: postData,
-        success: function (response) {
-            console.log(response);
-
-            $("#questions").html("<form method='post', name='status'>{% csrf_token %}"+ "{{" + form+ ".as_p }}" +
-                "<input type='submit' value='Status'></form>")
-        }
-    })
-}
-});
+            $(".resultBlock").html(data);
+            console.log(data);
+            }
+        });
+     };
+  });

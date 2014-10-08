@@ -1,0 +1,7 @@
+<div class='search_results'>
+ <h1>Your Search Result</h1>
+{% for result in results.all %}
+    <img src= "{{ result.image }}"/>
+    <p><a href ="/singles/{{ result.id }}">{{ result.username }}</a></p>
+{% endfor %}
+</div>

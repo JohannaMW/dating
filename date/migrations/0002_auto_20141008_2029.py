@@ -11,10 +11,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.AlterField(
             model_name='single',
-            name='location',
-            field=models.CharField(max_length=100, null=True, blank=True),
-            preserve_default=True,
+            name='image',
+            field=models.ImageField(null=True, upload_to=b'/static/', blank=True),
         ),
     ]
