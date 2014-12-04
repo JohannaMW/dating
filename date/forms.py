@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from date.models import Single
 from django.forms import ModelForm
+from djangular.forms import NgModelFormMixin, NgModelForm
 
 
 class SingleForm(UserCreationForm):
@@ -25,13 +26,13 @@ class SingleForm(UserCreationForm):
             code='duplicate_username',
         )
 
-class SingleDataForm(ModelForm):
+class SingleDataForm(NgModelFormMixin, NgModelForm):
     class Meta:
         model = Single
         fields = ("location", "paid", "age", "image", "gender", "status")
 
 
-class PreferenceForm(ModelForm):
+class PreferenceForm(NgModelFormMixin, NgModelForm):
     class Meta:
         model = Single
         fields = ("breakup", "romance", "argues", "relation_kind", "in_relationship", "relation_last", "family", "core_beliefs", "right_person")

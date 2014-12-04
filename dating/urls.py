@@ -24,15 +24,6 @@ urlpatterns = patterns('',
     url(r'^chat/$', 'date.views.chat', name='chat'),
     url(r'^match/$', 'date.views.match', name='match'),
     url(r'^admin/', include(admin.site.urls)),
-    # Forms
-#    url(r'^core_beliefs/$', 'date.views.core_beliefs', name='core_beliefs'),
-#    url(r'^questions/$', 'date.views.argues', name='argues'),
-#    url(r'^questions/$', 'date.views.break_up', name='break_up'),
-#    url(r'^questions/$', 'date.views.relation_kind', name='relation_kind'),
-#    url(r'^questions/$', 'date.views.relation_last', name='relation_last'),
-#    url(r'^questions/$', 'date.views.right_person', name='right_person'),
-#    url(r'^questions/$', 'date.views.romance', name='romance'),
-#    url(r'^questions/$', 'date.views.status', name='status'),
 )
 
 if settings.DEBUG:
