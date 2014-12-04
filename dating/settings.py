@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'date',
     'multiselectfield',
     'braintree',
+    'storages',
 )
 
 

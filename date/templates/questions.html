@@ -6,13 +6,12 @@
     <center>
     <div id="questions">
         <h1>Welcome</h1>
-        <form method="post" action=".">
+        <form method="post" enctype="multipart/form-data" action="." >
         {% csrf_token %}
         {{ form.as_p }}
 
         <input type="submit" value="Save">
     </form>
-     <button id="firstForm">Ready?</button>
             </div>
     </center>
 {% endblock content %}

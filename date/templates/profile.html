@@ -7,7 +7,7 @@
     </style>
     <center>
 <h1>Welcome {{ user.username }}</h1>
- <p>Photo: <img src="{{ user.image.url }}"/></p>
+ <p><img src="{{ user.image.url }}"/></p>
     <h2>Your Profile:</h2>
 {% if user.paid %}
         <img src="/static/img/paid.jpg" width="70px;" height="70px;">

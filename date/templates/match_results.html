@@ -1,0 +1,10 @@
+{% extends 'base_template.html' %}
+{% block content %}
+<div class='match_results'>
+ <h1>Your Matching Results {{ single.name }}</h1>
+{% for result in results.all %}
+    <p><a href ="/singles/{{ result.id }}"><img width="100px" height="100px" src= "{{ result.image.url }}"/>
+    {{ result.username }}</a></p>
+{% endfor %}
+</div>
+{% endblock content %}

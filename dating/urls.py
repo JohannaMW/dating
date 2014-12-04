@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^preferences/$', 'date.views.questions', name='questions'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^chat/$', 'date.views.chat', name='chat'),
+    url(r'^match/$', 'date.views.match', name='match'),
     url(r'^admin/', include(admin.site.urls)),
     # Forms
 #    url(r'^core_beliefs/$', 'date.views.core_beliefs', name='core_beliefs'),

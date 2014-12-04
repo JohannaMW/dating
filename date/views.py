@@ -53,7 +53,7 @@ def register(request):
 def data(request):
     single = Single.objects.get(username=request.user.username)
     if request.method == 'POST':
-        form = SingleDataForm(request.POST, instance=single)
+        form = SingleDataForm(request.POST, request.FILES, instance=single)
         if form.is_valid():
              if form.save():
                 return redirect("questions")
@@ -87,13 +87,14 @@ def form(request):
                           context_instance=RequestContext(request))
 
 def create_transaction(request):
+    if request.method == 'POST':
         result = braintree.Transaction.sale({
             "amount": "30.00",
             "credit_card": {
-                "number":  "4111111111111111",
-                "cvv":  "111",
-                "expiration_month": request.POST["month"],
-                "expiration_year": request.POST["year"]
+                "number":  request.POST.get("number"),
+                "cvv":  request.POST.get("cvv"),
+                "expiration_month": request.POST.get("month"),
+                "expiration_year": request.POST.get("year"),
             },
             "options": {
                 "submit_for_settlement": True
@@ -120,6 +121,23 @@ def singles(request):
 def single_profile(request, single_id):
     single = Single.objects.get(id=single_id)
     return render(request, "single_profile.html", {"single" : single})
+
+def chat(request):
+    single = Single.objects.get(username=request.user.username)
+    return render(request, "chat.html", {"single":single})
+
+def match(request):
+    single = Single.objects.get(username=request.user.username)
+    results = Single.objects.filter(~Q(gender__icontains=single.gender) | Q(status__icontains=single.status+1)|
+                                Q(status__icontains=single.status+2) | Q(status__icontains=single.status+3) |
+                                Q(romance__icontains=single.romance+1) |
+                                Q(romance__icontains=single.romance) |
+                                Q(romance__icontains=single.romance-1) |
+                                Q(argues__icontains=single.argues+1) |
+                                Q(argues__icontains=single.argues-1) |
+                                Q(argues__icontains=single.argues)
+                                ).order_by('first_name')
+    return render(request, "match_results.html", {"single" : single, "results" : results})
 
 
 
