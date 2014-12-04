@@ -34,47 +34,4 @@ class SingleDataForm(ModelForm):
 class PreferenceForm(ModelForm):
     class Meta:
         model = Single
-        fields = ("breakup", "romance", "argues", "relation_kind", "relation_last", "core_beliefs", "right_person")
-
-
-
-# class StatusForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['status']
-#
-# class BreakupForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['breakup']
-#
-# class RomanceForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['romance']
-#
-# class ArguesForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['argues']
-#
-# class RelationKindForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['relation_kind']
-#
-#
-# class RelationLastForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['relation_last']
-#
-# class CoreBeliefsForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['core_beliefs']
-#
-# class RightPersonForm(ModelForm):
-#     class Meta:
-#         model = Preference
-#         fields = ['right_person']
+        fields = ("breakup", "romance", "argues", "relation_kind", "in_relationship", "relation_last", "family", "core_beliefs", "right_person")

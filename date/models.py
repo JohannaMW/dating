@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from multiselectfield import MultiSelectField
-
 
 AGE = ((1, 'Barely Legal'),
             (2, '20\'s, loving it & getting in debt'),
@@ -170,7 +168,7 @@ RIGHT_PERSON = ((1, 'Mommy and Daddy tell me'),
 
 class Single(AbstractUser):
     paid = models.BooleanField(default=False)
-    location = models.CharField(max_length=100, null=True, blank=True)
+    location = models.IntegerField(max_length=2, choices=LOCATION, null=True, blank=True)
     age = models.IntegerField(max_length=2, choices=AGE, null=True, blank=True)
     image = models.ImageField(upload_to='static/img/', null=True, blank=True)
     gender = models.CharField(max_length=2, choices=GENDER, null=True, blank=True)
