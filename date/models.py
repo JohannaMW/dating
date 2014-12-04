@@ -163,8 +163,6 @@ RIGHT_PERSON = ((1, 'Mommy and Daddy tell me'),
             (7, 'I have no clue, but I know you will tell me who the right '
                   'person is because your the fucking bosses of match-making.'),)
 
-#class Location(models.Model):
- #   name = models.CharField(max_length=100)
 
 class Single(AbstractUser):
     paid = models.BooleanField(default=False)
